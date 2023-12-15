@@ -1,0 +1,26 @@
+<ngb-carousel
+  #carousel
+  (slide)="onSlide($event)"
+  [interval]="interval"
+  [pauseOnFocus]="pauseOnFocus"
+  [pauseOnHover]="pauseOnHover"
+>
+  @for (product of products; track product; let i = $index) {
+  <ng-template ngbSlide>
+    <div class="row">
+    <a class="col-md-6" routerLink="/product-details" target="_blank" rel="nofollow noopener noreferrer">
+				<div class="picsum-img-wrapper">
+					<img [src]="product.imgSrc" alt="No image :(" />
+				</div>
+		</a>
+    <div class="col-md-6">
+      <div style="color:black; margin-top:10px">{{product.name}}</div>
+      <div style="color:black">{{product.prices[0].price}}zł</div>
+      <div style="color:black">Średnia cena: {{product.avgPrice}}zł</div>
+		</div>
+    </div>
+		</ng-template>
+  }
+</ngb-carousel>
+
+<hr/>
