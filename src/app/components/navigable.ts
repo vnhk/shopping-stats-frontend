@@ -1,7 +1,7 @@
 import {Router} from "@angular/router";
 
 export class Navigable {
-  constructor(private router: Router) {
+  constructor(protected router: Router) {
   }
 
   redirectTo(uri: string) {

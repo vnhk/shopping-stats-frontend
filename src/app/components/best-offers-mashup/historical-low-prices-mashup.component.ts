@@ -6,15 +6,17 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Navigable} from "../navigable";
 
 @Component({
-  selector: 'app-best-offers-mashup',
+  selector: 'app-historical-low-offers-mashup',
   templateUrl: './historical-low-prices-mashup.component.html',
-  styleUrl: './best-offers-mashup.component.scss'
+  styleUrl: './historical-low-prices-mashup.component.scss'
 })
 export class HistoricalLowPricesMashup extends Navigable implements OnInit {
   historicalLowProducts: Map<number, Product[]> = new Map<number, Product[]>();
   selectedCategoryName: string | null = "";
   categories: string[] = [];
   historicalLowTabs: boolean[] = [false, false, false, false, true];
+  price_min_filter: number = 0;
+  price_max_filter: number = 100000;
 
   constructor(private productService: ProductService, private config: SetupConfigService,
               private route: ActivatedRoute, router: Router) {
@@ -24,18 +26,31 @@ export class HistoricalLowPricesMashup extends Navigable implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this.selectedCategoryName = this.route.snapshot.paramMap.get('category');
+    console.log(this.route);
+    console.log();
+    this.route.queryParams.subscribe((qp) => {
+      let min = qp['min'];
+      let max = qp['max'];
+      if (min) {
+        this.price_min_filter = parseInt(min);
+      }
+      if (max) {
+        this.price_max_filter = parseInt(max);
+      }
+    });
+
     if (this.selectedCategoryName == 'all') {
       this.selectedCategoryName = "";
     }
-    this.productService.loadHistoricalLowPriceProducts(10, 19, 100, this.selectedCategoryName)
+    this.productService.loadHistoricalLowPriceProducts(10, 19, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
       .subscribe((r) => this.setProducts(0, r.items));
-    this.productService.loadHistoricalLowPriceProducts(20, 29, 100, this.selectedCategoryName)
+    this.productService.loadHistoricalLowPriceProducts(20, 29, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
       .subscribe((r) => this.setProducts(1, r.items));
-    this.productService.loadHistoricalLowPriceProducts(30, 39, 100, this.selectedCategoryName)
+    this.productService.loadHistoricalLowPriceProducts(30, 39, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
       .subscribe((r) => this.setProducts(2, r.items));
-    this.productService.loadHistoricalLowPriceProducts(40, 49, 100, this.selectedCategoryName)
+    this.productService.loadHistoricalLowPriceProducts(40, 49, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
       .subscribe((r) => this.setProducts(3, r.items));
-    this.productService.loadHistoricalLowPriceProducts(50, 100, 100, this.selectedCategoryName)
+    this.productService.loadHistoricalLowPriceProducts(50, 100, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
       .subscribe((r) => this.setProducts(4, r.items));
   }
 
@@ -65,11 +80,23 @@ export class HistoricalLowPricesMashup extends Navigable implements OnInit {
   }
 
   changeCategory(category: string) {
-    if (category == 'Wszystkie') {
-      this.redirectTo("/best-offers/all");
+    this.selectedCategoryName = category;
+  }
+
+  refreshFilters() {
+    let url = "/best-offers/";
+    if (this.selectedCategoryName == 'Wszystkie') {
+      url += "all";
     } else {
-      this.redirectTo("/best-offers/" + category);
+      url += this.selectedCategoryName;
     }
+
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate(
+        [url],
+        {queryParams: {min: this.price_min_filter, max: this.price_max_filter}}
+      )
+    );
   }
 
   getHistoricalLowTabClass(index: number) {

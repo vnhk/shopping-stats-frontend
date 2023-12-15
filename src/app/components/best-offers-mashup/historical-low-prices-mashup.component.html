@@ -1,16 +1,36 @@
 <div class="container-md" style="margin-top: 10px">
   <div class="historical-low-section">
     <h2 class="section-name">Historycznie najniższe ceny:</h2>
-    <div class="d-inline-block" ngbDropdown>
+    <div class="row">
+      <span class="col-md-3">
+        <span class="d-inline-block" ngbDropdown>
       <button class="btn btn-outline-primary" id="categories-dropdown" ngbDropdownToggle type="button">
         Kategorie: {{selectedCategoryName}}
       </button>
-      <hr>
       <div aria-labelledby="categories-dropdown" ngbDropdownMenu>
         <button (click)="changeCategory(category)" *ngFor="let category of categories"
                 ngbDropdownItem>{{category}}</button>
       </div>
+    </span>
+      </span>
+      <span class="col-md-3">
+        <span class="input-group mb-3">
+        <span class="input-group-text">od</span>
+        <input [(ngModel)]="price_min_filter" class="form-control" type="number">
+        <span class="input-group-text">$</span>
+      </span>
+      </span>
+      <span class="col-md-3">
+        <span class="input-group mb-3">
+        <span class="input-group-text">do</span>
+        <input [(ngModel)]="price_max_filter" class="form-control" type="number">
+        <span class="input-group-text">$</span>
+      </span>
+      </span>
     </div>
+    <button (click)="refreshFilters()" class="btn btn-primary">Odśwież</button>
+    <hr>
+
     <div class="tabs">
       <ul class="nav nav-tabs">
         <li class="nav-item">
