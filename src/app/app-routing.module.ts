@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {BestOffersMashupComponent} from "./components/best-offers-mashup/best-offers-mashup.component";
+import {HistoricalLowPricesMashup} from "./components/best-offers-mashup/historical-low-prices-mashup.component";
 
 const routes: Routes = [
-  {path: 'best-offers/:category', component: BestOffersMashupComponent},
+  {path: 'best-offers/:category', component: HistoricalLowPricesMashup},
 ];
 
 @NgModule({

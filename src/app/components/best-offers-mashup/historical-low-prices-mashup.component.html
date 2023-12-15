@@ -1,0 +1,44 @@
+<div class="container-md" style="margin-top: 10px">
+  <div class="historical-low-section">
+    <h2 class="section-name">Historycznie najniższe ceny:</h2>
+    <div class="d-inline-block" ngbDropdown>
+      <button class="btn btn-outline-primary" id="categories-dropdown" ngbDropdownToggle type="button">
+        Kategorie: {{selectedCategoryName}}
+      </button>
+      <hr>
+      <div aria-labelledby="categories-dropdown" ngbDropdownMenu>
+        <button (click)="changeCategory(category)" *ngFor="let category of categories"
+                ngbDropdownItem>{{category}}</button>
+      </div>
+    </div>
+    <div class="tabs">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button (click)="setActiveTab(4)" [class]="getHistoricalLowTabClass(4)">+50%</button>
+        </li>
+        <li class="nav-item">
+          <button (click)="setActiveTab(3)" [class]="getHistoricalLowTabClass(3)">40-50%</button>
+        </li>
+        <li class="nav-item">
+          <button (click)="setActiveTab(2)" [class]="getHistoricalLowTabClass(2)">30-40%</button>
+        </li>
+        <li class="nav-item">
+          <button (click)="setActiveTab(1)" [class]="getHistoricalLowTabClass(1)">20-30%</button>
+        </li>
+        <li class="nav-item">
+          <button (click)="setActiveTab(0)" [class]="getHistoricalLowTabClass(0)">10-20%</button>
+        </li>
+      </ul>
+    </div>
+    <app-slider *ngIf="historicalLowTabs[0]" [interval]="3000"
+                [products]="historicalLowProducts.get(0)"></app-slider>
+    <app-slider *ngIf="historicalLowTabs[1]" [interval]="3000"
+                [products]="historicalLowProducts.get(1)"></app-slider>
+    <app-slider *ngIf="historicalLowTabs[2]" [interval]="3000"
+                [products]="historicalLowProducts.get(2)"></app-slider>
+    <app-slider *ngIf="historicalLowTabs[3]" [interval]="3000"
+                [products]="historicalLowProducts.get(3)"></app-slider>
+    <app-slider *ngIf="historicalLowTabs[4]" [interval]="3000"
+                [products]="historicalLowProducts.get(4)"></app-slider>
+  </div>
+</div>

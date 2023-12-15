@@ -6,14 +6,14 @@ import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SliderComponent} from './components/slider/slider.component';
 import {FormsModule} from "@angular/forms";
-import {BestOffersMashupComponent} from "./components/best-offers-mashup/best-offers-mashup.component";
+import {HistoricalLowPricesMashup} from "./components/best-offers-mashup/historical-low-prices-mashup.component";
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     SliderComponent,
-    BestOffersMashupComponent,
+    HistoricalLowPricesMashup,
   ],
   imports: [
     BrowserModule,
