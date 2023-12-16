@@ -50,6 +50,22 @@
               ],
               "outputHashing": "all"
             },
+            "local-local-be": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local-local-be.ts"
+                }
+              ]
+            },
+            "local-pi-be": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local-pi-be.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -69,6 +85,12 @@
             },
             "development": {
               "buildTarget": "shopping-stats-frontend:build:development"
+            },
+            "local-pi-be": {
+              "buildTarget": "shopping-stats-frontend:build:local-pi-be"
+            },
+            "local-local-be": {
+              "buildTarget": "shopping-stats-frontend:build:local-local-be"
             }
           },
           "defaultConfiguration": "development"
