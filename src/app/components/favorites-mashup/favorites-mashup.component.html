@@ -1,0 +1,8 @@
+<div class="container-md" style="margin-top: 10px">
+  <div *ngFor="let listName of favoritesListsName">
+    <h2>{{listName}}</h2>
+    <hr>
+    <app-slider [interval]="1500"
+                [products]="favorites.get(listName)"></app-slider>
+  </div>
+</div>

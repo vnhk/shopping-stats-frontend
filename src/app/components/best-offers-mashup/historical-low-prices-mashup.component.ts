@@ -10,7 +10,7 @@ import {Navigable} from "../navigable";
   templateUrl: './historical-low-prices-mashup.component.html',
   styleUrl: './historical-low-prices-mashup.component.scss'
 })
-export class HistoricalLowPricesMashup extends Navigable implements OnInit {
+export class HistoricalLowPricesMashupComponent extends Navigable implements OnInit {
   historicalLowProducts: Map<number, Product[]> = new Map<number, Product[]>();
   selectedCategoryName: string | null = "";
   categories: string[] = [];
