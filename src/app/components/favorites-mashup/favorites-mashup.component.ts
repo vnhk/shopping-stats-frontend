@@ -35,11 +35,12 @@ export class FavoritesMashupComponent implements OnInit {
     );
   }
 
-  filterCards() {
+  filterCards(filterValue: HTMLInputElement) {
+    //filterValue passed because it works faster and even for one character...
     this.filteredOut = [];
     let productCards = document.getElementsByClassName("product-card");
     for (let i = 0; i < productCards.length; i++) {
-      if (!productCards[i].textContent?.toLowerCase().includes(this.filterValue.toLowerCase())) {
+      if (!productCards[i].textContent?.toLowerCase().includes(filterValue.value.toLowerCase())) {
         this.filteredOut.push(i);
       }
     }

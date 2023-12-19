@@ -1,7 +1,7 @@
 <div class="container-md" style="margin-top: 10px">
   <div *ngFor="let listName of favoritesListsName">
     <h2>{{listName}}</h2>
-    <input (ngModelChange)="filterCards()" [(ngModel)]="filterValue" class="form-control"
+    <input (ngModelChange)="filterCards(filterValueInput)" #filterValueInput [(ngModel)]="filterValue" class="form-control"
            placeholder="Wpisz aby wyszukać...">
     <div class="row">
       <div *ngFor="let product of favorites.get(listName); let i = index" [hidden]="filteredOut.includes(i)"
