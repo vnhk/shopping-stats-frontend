@@ -29,7 +29,7 @@ export class FavoritesMashupComponent implements OnInit {
     this.config.loadFavoriteLists().subscribe((favorites) => {
         this.favoritesListsName = favorites;
         for (let favorite of favorites) {
-          this.favoritesService.loadFavoriteList(favorite,0, 50).subscribe((r) =>
+          this.favoritesService.loadFavoriteList(favorite,0, 2000).subscribe((r) =>
             this.favorites.set(favorite, r.items)
           )
         }
