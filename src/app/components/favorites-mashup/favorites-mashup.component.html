@@ -1,13 +1,11 @@
 <div class="container-md" style="margin-top: 10px">
   <div *ngFor="let listName of favoritesListsName">
     <h2>{{listName}}</h2>
-    <hr>
-    <app-slider [interval]="1500"
-                [products]="favorites.get(listName)"></app-slider>
-
-    <hr>
+    <input (ngModelChange)="filterCards()" [(ngModel)]="filterValue" class="form-control"
+           placeholder="Wpisz aby wyszukać...">
     <div class="row">
-      <div *ngFor="let product of favorites.get(listName)" class="card col-md-3 product-card">
+      <div *ngFor="let product of favorites.get(listName); let i = index" [hidden]="filteredOut.includes(i)"
+           class="card col-md-3 product-card">
         <img alt="Image not found :(" class="card-img-top" src="{{product.imgSrc}}">
         <div class="card-body">
           <div class="card-text">
