@@ -1,10 +1,11 @@
 <div class="container-md" style="margin-top: 10px">
+  <input #filterValueInput (ngModelChange)="filterCards(filterValueInput)" [(ngModel)]="filterValue"
+         class="form-control"
+         placeholder="Wpisz aby wyszukać...">
   <div *ngFor="let listName of favoritesListsName">
     <h2>{{listName}}</h2>
-    <input (ngModelChange)="filterCards(filterValueInput)" #filterValueInput [(ngModel)]="filterValue" class="form-control"
-           placeholder="Wpisz aby wyszukać...">
     <div class="row">
-      <div *ngFor="let product of favorites.get(listName); let i = index" [hidden]="filteredOut.includes(i)"
+      <div *ngFor="let product of favorites.get(listName); let i = index" [hidden]="isFilteredOut(listName, i)"
            class="card col-md-3 product-card">
         <img alt="Image not found :(" class="card-img-top" src="{{product.imgSrc}}">
         <div class="card-body">

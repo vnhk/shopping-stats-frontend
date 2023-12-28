@@ -45,4 +45,19 @@ export class FavoritesMashupComponent implements OnInit {
       }
     }
   }
+
+  isFilteredOut(listName: string, index: number) {
+    let offset = 0;
+    for (let j = 0; j < this.favoritesListsName.length; j++) {
+      if (this.favoritesListsName[j] == listName) {
+        return this.filteredOut.includes(index + offset);
+      }
+      let products = this.favorites.get(this.favoritesListsName[j]);
+      if (products != undefined) {
+        offset += products.length;
+      }
+    }
+
+    return false;
+  }
 }
