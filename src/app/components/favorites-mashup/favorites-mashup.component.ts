@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SetupConfigService} from "../../service/setup-config.service";
+import {CommonService} from "../../service/common.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Product} from "../../model/product";
 import {FavoritesService} from "../../service/favorites.service";
@@ -15,7 +15,7 @@ export class FavoritesMashupComponent implements OnInit {
   filterValue = "";
   filteredOut: number[] = [];
 
-  constructor(private favoritesService: FavoritesService, private config: SetupConfigService,
+  constructor(private favoritesService: FavoritesService, private config: CommonService,
               private route: ActivatedRoute, private router: Router) {
   }
 

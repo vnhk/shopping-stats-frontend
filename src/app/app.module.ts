@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {HistoricalLowPricesMashupComponent} from "./components/best-offers-mashup/historical-low-prices-mashup.component";
 import {HttpClientModule} from '@angular/common/http';
 import {FavoritesMashupComponent} from "./components/favorites-mashup/favorites-mashup.component";
+import {ScraperPageComponent} from "./components/scraper-page/scraper-page.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {FavoritesMashupComponent} from "./components/favorites-mashup/favorites-
     SliderComponent,
     HistoricalLowPricesMashupComponent,
     FavoritesMashupComponent,
+    ScraperPageComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
 })
 export class ProductService {
 
-  private HOST = environment.host;
+  private HOST = environment.stat_server_host;
 
   constructor(private httpClient: HttpClient) {
 

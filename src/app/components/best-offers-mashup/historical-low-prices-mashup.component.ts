@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../../model/product";
 import {ProductService} from "../../service/product.service";
-import {SetupConfigService} from "../../service/setup-config.service";
+import {CommonService} from "../../service/common.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Navigable} from "../navigable";
 
@@ -18,7 +18,7 @@ export class HistoricalLowPricesMashupComponent extends Navigable implements OnI
   price_min_filter: number = 0;
   price_max_filter: number = 100000;
 
-  constructor(private productService: ProductService, private config: SetupConfigService,
+  constructor(private productService: ProductService, private config: CommonService,
               private route: ActivatedRoute, router: Router) {
     super(router);
   }

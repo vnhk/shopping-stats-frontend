@@ -7,7 +7,7 @@ import {ApiResponse} from "../model/api-response";
   providedIn: 'root'
 })
 export class FavoritesService {
-  private HOST = environment.host;
+  private HOST = environment.stat_server_host;
 
   constructor(private httpClient: HttpClient) {
 
