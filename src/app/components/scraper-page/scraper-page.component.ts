@@ -15,6 +15,8 @@ export class ScraperPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.commonService.loadScrapLogs(this.lines).subscribe((r) => this.logs = r);
+    setInterval(() => {
+      this.commonService.loadScrapLogs(this.lines).subscribe((r) => this.logs = r);
+    }, 5000)
   }
 }
