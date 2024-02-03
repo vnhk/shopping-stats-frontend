@@ -34,31 +34,31 @@
     <div class="tabs">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <button (click)="setActiveTab(4)" [class]="getHistoricalLowTabClass(4)">+50%</button>
+          <button (click)="setActiveTab(4)" [class]="getAvgLowTabClass(4)">+50%</button>
         </li>
         <li class="nav-item">
-          <button (click)="setActiveTab(3)" [class]="getHistoricalLowTabClass(3)">40-50%</button>
+          <button (click)="setActiveTab(3)" [class]="getAvgLowTabClass(3)">40-50%</button>
         </li>
         <li class="nav-item">
-          <button (click)="setActiveTab(2)" [class]="getHistoricalLowTabClass(2)">30-40%</button>
+          <button (click)="setActiveTab(2)" [class]="getAvgLowTabClass(2)">30-40%</button>
         </li>
         <li class="nav-item">
-          <button (click)="setActiveTab(1)" [class]="getHistoricalLowTabClass(1)">20-30%</button>
+          <button (click)="setActiveTab(1)" [class]="getAvgLowTabClass(1)">20-30%</button>
         </li>
         <li class="nav-item">
-          <button (click)="setActiveTab(0)" [class]="getHistoricalLowTabClass(0)">10-20%</button>
+          <button (click)="setActiveTab(0)" [class]="getAvgLowTabClass(0)">10-20%</button>
         </li>
       </ul>
     </div>
-    <app-slider *ngIf="historicalLowTabs[0]" [interval]="3000"
-                [products]="historicalLowProducts.get(0)"></app-slider>
-    <app-slider *ngIf="historicalLowTabs[1]" [interval]="3000"
-                [products]="historicalLowProducts.get(1)"></app-slider>
-    <app-slider *ngIf="historicalLowTabs[2]" [interval]="3000"
-                [products]="historicalLowProducts.get(2)"></app-slider>
-    <app-slider *ngIf="historicalLowTabs[3]" [interval]="3000"
-                [products]="historicalLowProducts.get(3)"></app-slider>
-    <app-slider *ngIf="historicalLowTabs[4]" [interval]="3000"
-                [products]="historicalLowProducts.get(4)"></app-slider>
+    <app-slider *ngIf="avgLowTabs[0]" [interval]="3000"
+                [products]="avgLowProducts.get(0)"></app-slider>
+    <app-slider *ngIf="avgLowTabs[1]" [interval]="3000"
+                [products]="avgLowProducts.get(1)"></app-slider>
+    <app-slider *ngIf="avgLowTabs[2]" [interval]="3000"
+                [products]="avgLowProducts.get(2)"></app-slider>
+    <app-slider *ngIf="avgLowTabs[3]" [interval]="3000"
+                [products]="avgLowProducts.get(3)"></app-slider>
+    <app-slider *ngIf="avgLowTabs[4]" [interval]="3000"
+                [products]="avgLowProducts.get(4)"></app-slider>
   </div>
 </div>

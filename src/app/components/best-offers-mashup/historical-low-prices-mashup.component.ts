@@ -11,11 +11,12 @@ import {Navigable} from "../navigable";
   styleUrl: './historical-low-prices-mashup.component.scss'
 })
 export class HistoricalLowPricesMashupComponent extends Navigable implements OnInit {
-  historicalLowProducts: Map<number, Product[]> = new Map<number, Product[]>();
+  avgLowProducts: Map<number, Product[]> = new Map<number, Product[]>();
+  xMonthsForAverage = 3;
   selectedCategoryName: string | null = "";
   categories: string[] = [];
-  historicalLowTabs: boolean[] = [false, false, false, false, true];
-  price_min_filter: number = 0;
+  avgLowTabs: boolean[] = [false, false, false, false, true];
+  price_min_filter: number = 100;
   price_max_filter: number = 100000;
 
   constructor(private productService: ProductService, private config: CommonService,
@@ -42,15 +43,15 @@ export class HistoricalLowPricesMashupComponent extends Navigable implements OnI
     if (this.selectedCategoryName == 'all') {
       this.selectedCategoryName = "";
     }
-    this.productService.loadHistoricalLowPriceProducts(10, 19, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
+    this.productService.loadXMonthsAVGLowerPriceProducts(10, 19, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter, this.xMonthsForAverage)
       .subscribe((r) => this.setProducts(0, r.items));
-    this.productService.loadHistoricalLowPriceProducts(20, 29, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
+    this.productService.loadXMonthsAVGLowerPriceProducts(20, 29, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter, this.xMonthsForAverage)
       .subscribe((r) => this.setProducts(1, r.items));
-    this.productService.loadHistoricalLowPriceProducts(30, 39, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
+    this.productService.loadXMonthsAVGLowerPriceProducts(30, 39, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter, this.xMonthsForAverage)
       .subscribe((r) => this.setProducts(2, r.items));
-    this.productService.loadHistoricalLowPriceProducts(40, 49, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
+    this.productService.loadXMonthsAVGLowerPriceProducts(40, 49, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter, this.xMonthsForAverage)
       .subscribe((r) => this.setProducts(3, r.items));
-    this.productService.loadHistoricalLowPriceProducts(50, 100, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter)
+    this.productService.loadXMonthsAVGLowerPriceProducts(50, 100, 100, this.selectedCategoryName, this.price_min_filter, this.price_max_filter, this.xMonthsForAverage)
       .subscribe((r) => this.setProducts(4, r.items));
   }
 
@@ -58,7 +59,7 @@ export class HistoricalLowPricesMashupComponent extends Navigable implements OnI
     if (products && products.length != 0) {
       this.setActiveTab(index);
     }
-    return this.historicalLowProducts.set(index, products);
+    return this.avgLowProducts.set(index, products);
   }
 
   loadCategories() {
@@ -72,11 +73,11 @@ export class HistoricalLowPricesMashupComponent extends Navigable implements OnI
   }
 
   setActiveTab(index: number) {
-    for (let i = 0; i < this.historicalLowTabs.length; i++) {
-      this.historicalLowTabs[i] = false;
+    for (let i = 0; i < this.avgLowTabs.length; i++) {
+      this.avgLowTabs[i] = false;
     }
 
-    this.historicalLowTabs[index] = true;
+    this.avgLowTabs[index] = true;
   }
 
   changeCategory(category: string) {
@@ -99,12 +100,12 @@ export class HistoricalLowPricesMashupComponent extends Navigable implements OnI
     );
   }
 
-  getHistoricalLowTabClass(index: number) {
+  getAvgLowTabClass(index: number) {
     let classes = 'nav-link';
 
-    if (this.historicalLowProducts.get(index)?.length == 0) {
+    if (this.avgLowProducts.get(index)?.length == 0) {
       classes += " disabled";
-    } else if (this.historicalLowTabs[index]) {
+    } else if (this.avgLowTabs[index]) {
       classes += " active";
     }
 
