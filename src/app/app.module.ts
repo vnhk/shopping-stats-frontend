@@ -10,6 +10,8 @@ import {HistoricalLowPricesMashupComponent} from "./components/best-offers-mashu
 import {HttpClientModule} from '@angular/common/http';
 import {FavoritesMashupComponent} from "./components/favorites-mashup/favorites-mashup.component";
 import {ScraperPageComponent} from "./components/scraper-page/scraper-page.component";
+import {ProductDetailsComponent} from "./components/product-details/product-details.component";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import {ScraperPageComponent} from "./components/scraper-page/scraper-page.compo
     SliderComponent,
     HistoricalLowPricesMashupComponent,
     FavoritesMashupComponent,
-    ScraperPageComponent
+    ScraperPageComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    NgxChartsModule,
     HttpClientModule
   ],
   providers: [],

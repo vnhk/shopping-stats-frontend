@@ -1,6 +1,7 @@
 import {Price} from "./price";
 
 export class Product {
+  id: number = -1;
   name = "{Product_Name}";
   shop = "{SHOP}";
   offerLink: string = "{OFFER_LINK}"

@@ -19,6 +19,9 @@
       <h2 style="color:black">{{product.prices[0].price}}zł ({{product.prices[0].date | date: 'dd/MM/yyyy'}})</h2>
       <h4 style="color:black">Średnia cena: {{product.avgPrice}}zł</h4>
       <a href="{{product.offerLink}}" style="color:black">Link do sklepu</a>
+      <br>
+      <a href="/product-details/{{product.id}}" style="color:black">Szczegóły produktu</a>
+
       <hr>
     {{i + 1}} z {{products && products.length ? products.length : 0}}
     </div>
