@@ -41,7 +41,7 @@ export class ProductDetailsComponent implements OnInit {
         series: []
       });
 
-      for (let i = 0; i < this.product.prices.length; i++) {
+      for (let i = this.product.prices.length - 1; i >= 0; i--) {
         let priceDetails = this.product.prices[i];
         let date = priceDetails.formattedDate.split(" ")[0];
         let price = priceDetails.price;
