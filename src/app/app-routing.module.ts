@@ -6,9 +6,11 @@ import {
 import {FavoritesMashupComponent} from "./components/favorites-mashup/favorites-mashup.component";
 import {ScraperPageComponent} from "./components/scraper-page/scraper-page.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
+import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
   {path: 'best-offers/:category', component: HistoricalLowPricesMashupComponent},
+  {path: '', component: HomeComponent},
   {path: 'favorites', component: FavoritesMashupComponent},
   {path: 'scraper', component: ScraperPageComponent},
   {path: 'product-details/:id', component: ProductDetailsComponent},

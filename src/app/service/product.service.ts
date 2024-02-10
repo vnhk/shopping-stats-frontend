@@ -23,4 +23,8 @@ export class ProductService {
   findProductById(id: any): Observable<ApiResponse> {
     return this.httpClient.get<ApiResponse>(`${this.HOST}/summary-view/products/product?id=${id}`)
   }
+
+  findProductByName(name: string, currentPage: number) {
+    return this.httpClient.get<ApiResponse>(`${this.HOST}/summary-view/products/product?name=${name}&page=${currentPage}`)
+  }
 }

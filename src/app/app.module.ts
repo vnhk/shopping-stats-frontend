@@ -12,6 +12,9 @@ import {FavoritesMashupComponent} from "./components/favorites-mashup/favorites-
 import {ScraperPageComponent} from "./components/scraper-page/scraper-page.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {SearchComponent} from "./components/search/search.component";
+import {HomeComponent} from "./components/home/home.component";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     HistoricalLowPricesMashupComponent,
     FavoritesMashupComponent,
     ScraperPageComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    SearchComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     NgbModule,
     FormsModule,
     NgxChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgOptimizedImage
   ],
   providers: [],
   exports: [

@@ -1,0 +1,57 @@
+<div class="container-md" style="margin-top: 10px">
+  <div class="historical-low-section">
+    <br>
+    <!--    <h2 class="section-name">Historycznie najniższe ceny:</h2>-->
+    <br>
+    <div class="row">
+      <span>
+        <span class="input-group mb-3">
+        <span class="input-group-text">Szukaj</span>
+        <input [(ngModel)]="filterVal" class="form-control" type="text">
+        <span class="input-group-text">:)</span>
+        </span>
+      </span>
+    </div>
+    <button (click)="refreshFilters()" class="btn btn-primary">Odśwież</button>
+    <hr>
+
+    <nav>
+      <div class="row">
+        <span *ngFor="let product of products" class="col-md-3">
+          <div class="card-body">
+            <img alt="Image not found :(" class="card-img-top" src="{{product.imgSrc}}">
+            <div class="card-text">
+            <div style="color:black; margin-top:10px">{{product.name}}</div>
+              <h3 style="color:black">{{product.prices[0].price}}zł ({{product.prices[0].date | date: 'dd/MM/yyyy'}}
+                )</h3>
+              <h4 style="color:black">Średnia cena: {{product.avgPrice}}zł</h4>
+              <a href="{{product.offerLink}}" style="color:black">Link do sklepu</a>
+              <br>
+              <a href="/product-details/{{product.id}}" style="color:black">Szczegóły produktu</a>
+            </div>
+        </div>
+        </span>
+      </div>
+
+      <ul *ngIf="pages > 1" class="pagination" style="margin-right: auto; margin-left: auto">
+        <li class="page-item">
+          <a aria-label="Previous" class="page-link" href="#">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <span *ngFor="let p of pagesArr;">
+          <li *ngIf="p == currentPage" class="page-item active"><a (click)="changePage(p)"
+                                                                   class="page-link">{{p}}</a></li>
+          <li *ngIf="p != currentPage" class="page-item"><a (click)="changePage(p)" class="page-link">{{p}}</a></li>
+        </span>
+        <li class="page-item">
+          <a aria-label="Next" class="page-link" href="#">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</div>
+
