@@ -45,13 +45,13 @@ export class ProductDetailsComponent implements OnInit {
         let priceDetails = this.product.prices[i];
         let date = priceDetails.formattedDate.split(" ")[0];
         let price = priceDetails.price;
-        this.multi[0].series.push({
-          name: date,
-          value: price
-        })
+        if(price > 0) {
+          this.multi[0].series.push({
+            name: date,
+            value: price
+          })
+        }
       }
-
-      console.log(this.multi);
     })
   }
 }
