@@ -47,27 +47,52 @@ export class SearchComponent implements OnInit {
 
   private buildPagesArr() {
     this.pagesArr = [];
-    if (this.currentPage <= 10) {
-      for (let i = 0; i < 10; i++) {
-        this.pagesArr.push(i + 1);
-      }
-    } else if (this.pages - this.currentPage < 10) {
-      for (let i = this.pages; i > this.pages - 10; i--) {
+    if (this.pages + 1 <= 10) {
+      for (let i = 0; i < this.pages; i++) {
         this.pagesArr.push(i + 1);
       }
     } else {
-      for (let i = this.currentPage - 4; i < this.currentPage; i++) {
-        this.pagesArr.push(i + 1);
+      let start = this.currentPage - 4;
+      let end = this.currentPage + 4;
+      if (start < 1) {
+        end += 1 - start + 1;
+        start = 1;
       }
-      this.pagesArr.push(this.currentPage);
-      for (let i = this.currentPage; i < this.currentPage + 4; i++) {
-        this.pagesArr.push(i + 1);
+      if (end > this.pages + 1) {
+        end = this.pages + 1;
+      }
+      for (let i = start; i <= end; i++) {
+        this.pagesArr.push(i);
       }
     }
   }
 
   changePage(p: number) {
     this.currentPage = p;
+    this.load();
+  }
+
+  nextPage() {
+    if (this.currentPage < this.pages + 1) {
+      this.currentPage++;
+      this.load();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.load();
+    }
+  }
+
+  lastPage() {
+    this.currentPage = this.pages + 1;
+    this.load();
+  }
+
+  firstPage() {
+    this.currentPage = 1;
     this.load();
   }
 }

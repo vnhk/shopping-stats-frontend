@@ -33,23 +33,47 @@
         </span>
       </div>
 
-      <ul *ngIf="pages > 1" class="pagination" style="margin-right: auto; margin-left: auto">
+      <span class="row">
+      <span class="col-md-3"></span>
+      <ul *ngIf="pages > 1" class="pagination col-md-6">
         <li class="page-item">
-          <a aria-label="Previous" class="page-link" href="#">
+          <a (click)="prevPage()" aria-label="Previous" class="page-link">
             <span aria-hidden="true">&laquo;</span>
           </a>
+        </li>
+        <li *ngIf="!pagesArr.includes(1)" class="page-item">
+            <a (click)="firstPage()" aria-label="First" class="page-link">
+            <span aria-hidden="true">1</span>
+          </a>
+        </li>
+        <li *ngIf="!pagesArr.includes(1)" class="page-item">
+           <a class="page-link">
+              <span aria-hidden="true">...</span>
+           </a>
         </li>
         <span *ngFor="let p of pagesArr;">
           <li *ngIf="p == currentPage" class="page-item active"><a (click)="changePage(p)"
                                                                    class="page-link">{{p}}</a></li>
           <li *ngIf="p != currentPage" class="page-item"><a (click)="changePage(p)" class="page-link">{{p}}</a></li>
         </span>
+         <li *ngIf="!pagesArr.includes(pages + 1)" class="page-item">
+           <a class="page-link">
+              <span aria-hidden="true">...</span>
+           </a>
+        </li>
+        <li *ngIf="!pagesArr.includes(pages + 1)" class="page-item">
+            <a (click)="lastPage()" aria-label="Last" class="page-link">
+            <span aria-hidden="true">{{pages + 1}}</span>
+          </a>
+        </li>
         <li class="page-item">
-          <a aria-label="Next" class="page-link" href="#">
+          <a (click)="nextPage()" aria-label="Next" class="page-link">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
       </ul>
+      <span class="col-md-3"></span>
+      </span>
     </nav>
 
   </div>
