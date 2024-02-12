@@ -27,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   timeline: boolean = true;
 
   product: Product = new Product();
+  loadingInProgressChart: Boolean = true;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
@@ -52,6 +53,7 @@ export class ProductDetailsComponent implements OnInit {
           })
         }
       }
+      this.loadingInProgressChart = false;
     })
   }
 }

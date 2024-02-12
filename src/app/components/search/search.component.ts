@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   pages = 0;
   pagesArr: number[] = [1];
   currentPage = 1;
+  searchInProgress = false;
 
   constructor(private productService: ProductService, private config: CommonService,
               private route: ActivatedRoute, router: Router) {
@@ -27,6 +28,7 @@ export class SearchComponent implements OnInit {
   }
 
   private load() {
+    this.searchInProgress = true;
     this.productService.findProductByName(this.filterVal, this.currentPage - 1)
       .subscribe(res => {
         this.products = res.items;
@@ -39,6 +41,8 @@ export class SearchComponent implements OnInit {
             this.pagesArr.push(i + 1);
           }
         }
+
+        this.searchInProgress = false;
       })
   }
 

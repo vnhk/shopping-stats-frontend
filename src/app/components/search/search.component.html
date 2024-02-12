@@ -1,8 +1,6 @@
 <div class="container-md" style="margin-top: 10px">
   <div class="historical-low-section">
     <br>
-    <!--    <h2 class="section-name">Historycznie najniższe ceny:</h2>-->
-    <br>
     <div class="row">
       <span>
         <span class="input-group mb-3">
@@ -12,11 +10,15 @@
         </span>
       </span>
     </div>
-    <button (click)="refreshFilters()" class="btn btn-primary">Odśwież</button>
+    <button (click)="refreshFilters()" class="btn btn-primary">Wyszukaj</button>
     <hr>
 
     <nav>
-      <div class="row">
+      <div *ngIf="searchInProgress" class="d-flex align-items-center">
+        <strong role="status">Wyszukiwanie...</strong>
+        <div aria-hidden="true" class="spinner-border ms-auto"></div>
+      </div>
+      <div *ngIf="!searchInProgress" class="row">
         <span *ngFor="let product of products" class="col-md-3">
           <div class="card-body">
             <img alt="Image not found :(" class="card-img-top" src="{{product.imgSrc}}">
@@ -46,7 +48,7 @@
             <span aria-hidden="true">1</span>
           </a>
         </li>
-        <li *ngIf="!pagesArr.includes(1)" class="page-item">
+        <li *ngIf="!pagesArr.includes(1) && pages > 10" class="page-item">
            <a class="page-link">
               <span aria-hidden="true">...</span>
            </a>
@@ -56,7 +58,7 @@
                                                                    class="page-link">{{p}}</a></li>
           <li *ngIf="p != currentPage" class="page-item"><a (click)="changePage(p)" class="page-link">{{p}}</a></li>
         </span>
-         <li *ngIf="!pagesArr.includes(pages + 1)" class="page-item">
+         <li *ngIf="!pagesArr.includes(pages + 1) && pages > 10" class="page-item">
            <a class="page-link">
               <span aria-hidden="true">...</span>
            </a>
